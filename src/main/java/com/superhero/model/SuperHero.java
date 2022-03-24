@@ -33,10 +33,10 @@ public class SuperHero {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
+    @Column(name = "alias")
     private String alias;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
     @ElementCollection
@@ -47,7 +47,7 @@ public class SuperHero {
     @CollectionTable(name="WEAPON", joinColumns=@JoinColumn(name="WEAPON_ID"))
     private List<String> weapons;
 
-    @Column
+    @Column(name = "origin")
     private String origin;
 
     @ElementCollection
