@@ -13,17 +13,29 @@ public class SuperHeroServiceImpl implements SuperHeroService {
     private SuperHeroDao superHeroDao;
 
     public SuperHero create(SuperHeroDTO superHeroDTO){
-        SuperHero superHero = SuperHero.builder()
-                .alias(superHeroDTO.getAlias())
-                .name(superHeroDTO.getName())
-                .powers(superHeroDTO.getPowers())
-                .weapons(superHeroDTO.getWeapons())
-                .origin(superHeroDTO.getOrigin())
-                .associations(superHeroDTO.getAssociations())
-                .build();
+        try {
+            SuperHero superHero = SuperHero.builder()
+                    .alias(superHeroDTO.getAlias())
+                    .name(superHeroDTO.getName())
+                    .powers(superHeroDTO.getPowers())
+                    .weapons(superHeroDTO.getWeapons())
+                    .origin(superHeroDTO.getOrigin())
+                    .associations(superHeroDTO.getAssociations())
+                    .build();
 
-        SuperHero superHeroDB = superHeroDao.save(superHero);
+            SuperHero superHeroDB = superHeroDao.save(superHero);
 
-        return superHeroDB;
+            return superHeroDB;
+        } catch (RuntimeException r) {
+            throw new RuntimeException(r);
+        }
+    }
+
+    public void delete(Long id){
+        try {
+            superHeroDao.deleteById(id);
+        } catch (RuntimeException r) {
+            throw new RuntimeException(r);
+        }
     }
 }
