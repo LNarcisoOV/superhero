@@ -6,11 +6,17 @@ import com.superhero.model.dto.SuperHeroDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SuperHeroServiceImpl implements SuperHeroService {
 
     @Autowired
     private SuperHeroDao superHeroDao;
+
+    public List<SuperHero> getAll(){
+        return superHeroDao.findAll();
+    }
 
     public SuperHero create(SuperHeroDTO superHeroDTO){
         try {
