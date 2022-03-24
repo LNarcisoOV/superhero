@@ -63,7 +63,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-		<finalName>superheroe</finalName>
+		<finalName>superhero</finalName>
 	</build>
 
 </project>
