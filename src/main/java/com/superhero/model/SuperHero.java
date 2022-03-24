@@ -1,30 +1,34 @@
-package com.superhero.model.dto;
+package com.superhero.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
+@Builder
 @Getter
 @Setter
-public class SuperHeroDTO {
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+public class SuperHero {
 
-    @JsonProperty("alias")
+    private long id;
+
     private String alias;
 
-    @JsonProperty("name")
     private String name;
 
-    @JsonProperty("powers")
     private List<String> powers;
 
-    @JsonProperty("weapons")
     private List<String> weapons;
 
-    @JsonProperty("origin")
     private String origin;
 
-    @JsonProperty("associations")
     private List<String> associations;
 }
