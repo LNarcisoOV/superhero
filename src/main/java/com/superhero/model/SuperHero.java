@@ -8,27 +8,49 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 import java.util.List;
 
-@Builder
+@Entity
 @Getter
 @Setter
+@Builder
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "SUPER_HERO")
 public class SuperHero {
 
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
+    @Column
     private String alias;
 
+    @Column
     private String name;
 
+    @ElementCollection
+    @CollectionTable(name="POWER", joinColumns=@JoinColumn(name="POWER_ID"))
     private List<String> powers;
 
+    @ElementCollection
+    @CollectionTable(name="WEAPON", joinColumns=@JoinColumn(name="WEAPON_ID"))
     private List<String> weapons;
 
+    @Column
     private String origin;
 
+    @ElementCollection
+    @CollectionTable(name="ASSOCIATION", joinColumns=@JoinColumn(name="ASSOCIATION_ID"))
     private List<String> associations;
 }
